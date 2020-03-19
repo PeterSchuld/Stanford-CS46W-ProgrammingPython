@@ -1,0 +1,82 @@
+# SCS CS 46 W   Project Version-2
+# Student name: Peter Schuld
+# Student ID:   90980339
+# Date:         Dec. 6, 2017
+
+
+import csv      # Read data from a CSV file with the csv module (chapter 14 of the textbook)
+costcoFile=open('costco-citi-visa-due-soon - bob copy - sorted - with sparse categories.csv')   # opens the csv file in the working directory
+costcoReader=csv.reader(costcoFile)
+costcoData=list(costcoReader)   # creates a list of lists 'costcoData' from the csv file data. The list values are strings.
+n=(len(costcoData))             # The integer variable i holds the lenth of the list
+amountfloat=0                   # Define float variables
+total=0
+entertainment=0
+food=0
+household=0
+pet=0
+petMedical=0
+kid=0
+kidMedical=0
+travel=0
+utilities=0
+gift=0
+charity=0
+findDetail=0
+ignore=0
+fixedInsurance=0
+WarningNoCategory=0
+
+mapping={'Aldi':'Discount'} # The dictionary 'mapping' is defined with a first key and first name.
+
+for i in range(n-1):        # Fill keys (i.e. vendors) and values (i.e. categories) into the directory from list 'costcoData'
+    Vendor=costcoData[i+1][2]
+    Category=costcoData[i+1][5]
+    if Category!='':        # Map the category for every vendor in the database if it exists
+        mapping[Vendor]=Category
+    else:
+        continue            # Make sure that the mapping is completed with all available data from vendors
+    
+   
+
+for i in range(n-1):        # Filling missing categories from mapping same vendor. Assign a warning if category can not be retrieved from mapping
+    Vendor=costcoData[i+1][2]                                            
+    category=costcoData[i+1][5]
+    if category=='':                                                    # Checking if a value exists in the dictionary for missing categories
+        costcoData[i+1][5]=mapping.get(Vendor,'WARNING-NO-CATEGORY')    # Use get() method from Chapter 5 to avoid error message when vendor has no mapped category. 
+    else:
+        continue
+
+
+for i in range(n-1):
+    category=costcoData[i+1][5]                 # Calculate the totals for each category
+    amount=costcoData[i+1][1].strip('$()')      # Remove non-mumerical signs from the string-values
+    amountfloat=float(amount.replace(',',''))   # Convert a string to float by removing non-float class signs
+    
+    if '(' in costcoData[i+1][1]:amountfloat=amountfloat*-1                 # Assign a minus sign to negative amounts
+    if category=='entertainment':entertainment=entertainment+amountfloat    # Calculate sums for categories
+    if category=='food':food=food+amountfloat
+    if category=='household':household=household+amountfloat
+    if category=='pet':pet=pet+amountfloat
+    if category=='pet-medical':petMedical=petMedical+amountfloat
+    if category=='kid':kid=kid+amountfloat
+    if category=='kid-medical':kidMedical=kidMedical+amountfloat
+    if category=='travel':travel=travel+amountfloat
+    if category=='utilities':utilities=utilities+amountfloat
+    if category=='gift':gift=gift+amountfloat
+    if category=='charity':charity=charity+amountfloat
+    if category=='find-detail':findDetail=findDetail+amountfloat
+    if category=='ignore':ignore=ignore+amountfloat
+    if category=='fixed-insurance':fixedInsurance=fixedInsurance+amountfloat
+    if category=='WARNING-NO-CATEGORY':WarningNoCategory=WarningNoCategory+amountfloat
+    
+
+
+
+outputFile=open('output.version-2.budget-monthly-totals-and-tracking.csv','w')  # Create csv output file with double-spacing from Chapter 14 textbook
+outputWriter=csv.writer(outputFile)                                             # Write headers and totals for categories
+outputWriter.writerow(['Which Card?','Month','entertainment','food','household','pet','pet-medical','kid','kid-medical','travel','utilities','gift','charity','find-detail','ignore','fixed-insurance','WARNING-NO-CATEGORY'])
+outputWriter.writerow(['Costco Visa','March 2017',str(entertainment),str(food),str(household),str(pet),str(petMedical),str(kid),str(kidMedical),str(travel),str(utilities),str(gift),str(charity),str(findDetail),str(ignore),str(fixedInsurance),str(WarningNoCategory)])
+outputFile.close()
+                      
+print("'budget-monthly-totals-and-tracking.csv' file was created !")

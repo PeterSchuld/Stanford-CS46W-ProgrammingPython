@@ -1,0 +1,13 @@
+Peter Schuld
+CS 46 W (Fall 2017) – Project 
+Date: Dec 6, 2017
+
+Challenges
+
+The textbook and course material have provided most of the material used for my project. In addition to chapter 1-6 of the textbook I have used chapter 14 and The Python Tutorial online (https://docs.python.org/3.6/tutorial/index.html).
+
+The first problem that I have encountered was related to converting the strings with US$ amounts from the csv files to Python float variables. The $ sign and brackets for negative values can not easily be converted to float variables necessary for calculating the category totals. Therefore, I have removed those non-numerical signs using strip() (chapter 6 textbook) from the strings before converting them to float variables. If the string originally included ‘()’ signs for negative amounts I have multiplied the converted float value with minus one. Furthermore, the ‘,’ sign for amounts exceeding 999.99 has caused error messages and I had to consult internet resources. Apparently, there are two ways to facilitate the string-float conversion for currencies and I have decided to remove all non-numerical signs from the string rather than changing the country settings (my computer is based in Germany with local country settings). 
+
+amountfloat=float(amount.replace(',','')) # https://www.jquery-az.com/convert-a-python-string-to-int-and-float-by-using-int-and-float-class/
+
+The second problem has occurred during version2 of the project when I have tried mapping the vendors with the categories and filling missing categories. I use a dictionary data type for storing the vendors as keys and the categories as values. Beforehand, I have tried to perform both tasks in the same loop, mapping the vendors/categories for those rows of the original csv file that have categories and filling the missing categories for rows without categories. This approach leads to several warning messages for missing category data because the mapping was not completed and the dictionary incomplete when the category writing process started. Consequently, I decided to perform the mapping in a separate loop that runs through the entire data set of vendors and categories and use a second loop for filling the missing category values.

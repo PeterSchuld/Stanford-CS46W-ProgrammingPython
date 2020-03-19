@@ -1,0 +1,2 @@
+The Python file 'PeterSchuld-version1' needs access to the csv file 'costco-citi-visa-due-soon - bob copy - sorted - with categories' in the working directory. The program creates the new csv file 'budget-monthly-totals-and-tracking.csv'in the same directory. The aggregated sums in the output file are denomiated in USD but do not include currency specific signs and negative values are indicated by a minus sign (i.e. no "$" sign or "()" for negative values).
+ 

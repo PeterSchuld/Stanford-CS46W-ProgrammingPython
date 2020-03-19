@@ -1,0 +1,7 @@
+I have used the following web resource to help convert a Python string into a float variable. 
+
+My code:  amountfloat=float(amount.replace(',','')) 
+
+Using replace() to remove non-numerical signs from a string before converting to float was taken from this source:
+
+https://www.jquery-az.com/convert-a-python-string-to-int-and-float-by-using-int-and-float-class/
