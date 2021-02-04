@@ -1,4 +1,4 @@
-# -CS 46 W — Beginning Programming in Python: An Online Course -
+# Stanford Continuing Studies CS 46 W — Beginning Programming in Python: An Online Course -
 The course explores the world of programming by teaching students the fundamental syntax and meaning of the Python programming language.
 
 ### Final Assignment ###
