@@ -1,7 +1,10 @@
 # Stanford CS 46 W — Beginning Programming in Python: An Online Course -
 Final Project of the Stanford Continuing Studies course. The eight-Week online course explores the world of programming by teaching students the fundamental syntax and meaning of the Python programming language.
 
-Instructor:  Eli Lev, Technology Manager, Stanford Continuing Studies
+Instructor:  
+   Eli Lev, Technology Manager, Stanford Continuing Studies
+   ( eli@elilev.com )
+
 
 ### Final Assignment ###
 Practical Python Programming for Automation of Repetitive Tasks. 
